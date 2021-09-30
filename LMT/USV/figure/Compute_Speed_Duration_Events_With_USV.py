@@ -3,32 +3,29 @@ Created on 18 avr. 2020
 
 @author: Elodie
 '''
-import matplotlib.pyplot as plt
+
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-from lmtanalysis.Animal import *
-from lmtanalysis.Event import *
-from lmtanalysis.Measure import *
-import numpy as np; np.random.seed(0)
-from tkinter.filedialog import askopenfilename
+
 from lmtanalysis.Util import getMinTMaxTAndFileNameInput, getMinTMaxTInput
-import sqlite3
-import seaborn as sns
 
+from scipy.stats import mannwhitneyu
 
-from lmtanalysis.FileUtil import getFilesToProcess
-from LMT.USV.experimentList.experimentList import getExperimentList,\
-    getAllExperimentList
-from LMT.USV.lib.vocUtil import cleanVoc, colorAge
+from LMT.USV.experimentList.experimentList import getExperimentList    
 
 from scipy.spatial.transform import rotation
 from LMT.USV.figure.figParameter import *
-from _collections import OrderedDict
+
 from LMT.USV.figure.figUtil import getStarsFromPvalues, addJitter
-from scipy.stats.stats import mannwhitneyu
+
 from scipy.stats.morestats import wilcoxon
 import string
 import matplotlib.image as mpimg
+from lmtanalysis.Animal import AnimalPool
+from lmtanalysis.Event import EventTimeLine
+import json
+import numpy as np
+import sqlite3
 
 def checkIfOverlapWith( eventBehavToCheck , vocDictionnary ):
     
@@ -1345,7 +1342,7 @@ if __name__ == '__main__':
         question +="\n\t [pp] plot scatterpoint figure for WT 3 age classes for speed and duration (mean per ind)"
         question +="\n\t [ppko] plot scatterpoint figure for Shank3 and WT for speed and duration (mean per ind)"
         question +="\n"
-        answer = iinputFile question )
+        answer = input("Action:")
         
         if answer=="c":
             #computeEventsOverlappingWithUsv( strain='C57BL/6J', age = '3mo', sex = 'male', eventListToTest=behavEventListShort )

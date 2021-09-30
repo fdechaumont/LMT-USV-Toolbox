@@ -7,40 +7,11 @@ Created on 20 janv. 2020
 
 
 
-from lmtanalysis.Animal import AnimalPool
-from lmtanalysis.Event import Event, EventTimeLine
-from lmtanalysis.Measure import oneDay, oneHour, oneMinute
-from lmtanalysis.Util import getMinTMaxTAndFileNameInput, convert_to_d_h_m_s,\
-    getMinTMaxTInput
-import matplotlib.pyplot as plt
-from matplotlib import ticker
-import seaborn as sns
-import pandas
-import scipy.stats as stats
-from scipy.stats import ttest_1samp, wilcoxon, ttest_ind, mannwhitneyu
 
-
-import numpy as np
-
-from scipy import signal
-from scipy.io import wavfile
-import os
-import wave
-import pylab
-from lmtanalysis.FileUtil import getFilesToProcess
-import pandas as pd
-from pandas.core.frame import DataFrame
-from scipy import stats
-
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-from statsmodels.stats.anova import anova_lm
-import json
 
 from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
 from LMT.USV.lib.vocUtil import *
-from LMT.USV.experimentList.experimentList import getAllExperimentList,\
-    getExperimentList
+
 from LMT.USV.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
     colorKO, getPaperColor, getFigureVocTraits, getFigureLabelTrait,\
     getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\

@@ -2,41 +2,21 @@
 Created by E. Ey on 07/12/2020
 '''
 
-from lmtanalysis.Event import *
-from lmtanalysis.Measure import *
-import numpy as np;
+from scripts.ComputeMeasuresIdentityProfileOneMouseAutomatic import mergeProfileOverNights, getProfileValues, getProfileValuesPairs
+from LMT.USV.figure.figParameter import getColorAge, getFigureBehaviouralEvents, getColorWT, getColorKO, getFigureBehaviouralEventsLabels
 
-from scripts.ComputeMeasuresIdentityProfileOneMouseAutomatic import mergeProfileOverNights, getProfileValues, \
-    getProfileValuesPairs
 
-np.random.seed(0)
-from tkinter.filedialog import askopenfilename
-from lmtanalysis.Util import getMinTMaxTAndFileNameInput, getMinTMaxTInput
-import sqlite3
-from lmtanalysis.FileUtil import getFilesToProcess, getJsonFileToProcess, getStarsFromPvalues
-from lmtanalysis.Animal import AnimalPool
+from lmtanalysis.FileUtil import getJsonFileToProcess, getStarsFromPvalues
 from collections import Counter
-from LMT.USV.lib.vocUtil import *
 import pandas as pd
 import seaborn as sns
-#import pingouin as pg
-from scipy import stats
-from scipy.stats.stats import spearmanr, mannwhitneyu
-from statsmodels.stats.anova import AnovaRM
-from LMT.USV.experimentList.experimentList import getExperimentList,\
-    getAllExperimentList
 from scipy.stats.morestats import wilcoxon
-from matplotlib.lines import Line2D
-import matplotlib.patches as patches
-import matplotlib.gridspec as gridspec
-from LMT.USV.burster.burster import *
-from USV.figure.figUtil import addJitter
 from USV.figure.figParameter import *
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import mannwhitneyu, kruskal, ttest_ind
+from scipy.stats import mannwhitneyu, kruskal
 import string
 import matplotlib.patches as mpatches
+import json
+import matplotlib.pyplot as plt
 
 
 def singlePlotPerEventProfileBothSexesPerAge(dataframe, valueCat, behavEvent, ax, letter,
@@ -305,7 +285,7 @@ if __name__ == '__main__':
                "Oral-genital Contact TotalLen": 0, "Side by side Contact TotalLen": 0,
                "Side by side Contact, opposite way TotalLen": 0, "Train2 TotalLen": 0,
                "FollowZone Isolated TotalLen": 0, "Social approach TotalLen": 000,
-               "Approach contact TotalLen": 00, "Get away TotalLen": 00, "Break contact TotalLen": 00,
+               "Approach contact TotalLen": 0, "Get away TotalLen": 0, "Break contact TotalLen": 0,
 
                "Move isolated MeanDur": 0, "Move in contact MeanDur": 0, "WallJump MeanDur": 0,
                "Stop isolated MeanDur": 0, "Rear isolated MeanDur": 0,
@@ -365,7 +345,7 @@ if __name__ == '__main__':
         question += "\n\t [2] plot the behavioral profiles for Shank3 mice (females)?"
         question += "\n\t [3] plot the figure 2 with the behavioral profiles for C57BL/6J mice and for Shank3 mice?"
         question += "\n"
-        answer = inpuinputFilestion)
+        answer = input("Action:")
 
         if answer == "1":
             #plot the complete figure for the profiles

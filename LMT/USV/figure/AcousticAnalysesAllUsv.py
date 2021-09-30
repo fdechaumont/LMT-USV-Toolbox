@@ -12,9 +12,21 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import statsmodels.formula.api as smf
-from LMT.USV.figure.figParameter import getFigureLabelTrait, getColorAge,\
-    getColorWT, getColorKO
+from LMT.USV.figure.figParameter import getFigureLabelTrait, getColorAge, getColorWT, getColorKO
 from LMT.USV.figure.figUtil import getStarsFromPvalues
+from LMT.USV.figure.figParameter import *
+from LMT.USV.figure.vocUtil import *
+import sqlite3
+from LMT.USV.lib.vocUtil import ageList
+from lmtanalysis.Event import EventTimeLine
+import json
+import sklearn
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from lmtanalysis.Util import getMinTMaxTInput
+import pandas
+import string
+import matplotlib.patches as mpatches
 
 
 def cleanUSVTimeLine( timeLine , selectedTimeLine ):
@@ -358,7 +370,7 @@ if __name__ == '__main__':
         question += "\n\t [page] simple plot and analyse raw acoustic variables for age in C57BL/6J mice (from stored json file)?"
         question += "\n\t [pko] plot and analyse raw acoustic variables in C57BL/6J and Shank3 KO mice (from stored json file)?"
         question += "\n"
-        answer = inpuinputFilestion)
+        answer = input("Action")
 
         if answer == "e":
             experiments = getAllExperimentList()

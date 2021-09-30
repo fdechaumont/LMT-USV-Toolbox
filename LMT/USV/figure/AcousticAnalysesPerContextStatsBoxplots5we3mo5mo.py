@@ -1,54 +1,15 @@
 '''
 Created on 20 janv. 2020
 
-@author: Elodie
+@author: Elodie Ey
 '''
 
-from tkinter.filedialog import askopenfilename
-import sqlite3
-import os
-import numpy as np
-from lmtanalysis.Animal import AnimalPool
-from lmtanalysis.Event import Event, EventTimeLine
-from lmtanalysis.Measure import oneDay, oneHour, oneMinute
-from lmtanalysis.Util import getMinTMaxTAndFileNameInput, convert_to_d_h_m_s,\
-    getMinTMaxTInput
-import matplotlib.pyplot as plt
-from matplotlib import ticker
-import seaborn as sns
-import pandas
-import scipy.stats as stats
-from scipy.stats import mannwhitneyu, kruskal, ttest_ind
-from numpy import sum
 import matplotlib.image as mpimg
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-import matplotlib.patches as mpatches
 
-import numpy as np
-
-from scipy import signal
-from scipy.io import wavfile
-import os
-import wave
-import pylab
-from lmtanalysis.FileUtil import getFilesToProcess
-import pandas as pd
-from pandas.core.frame import DataFrame
-from scipy import stats
-
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-from statsmodels.stats.anova import anova_lm
-import json
 from LMT.USV.testVocTraitUsagePerEventType.test1 import cleanVoc
 from LMT.USV.lib.vocUtil import *
-from LMT.USV.experimentList.experimentList import getAllExperimentList
 from LMT.USV.figure.figParameter import *
-from USV.figure.figUtil import addJitter, getStarsFromPvalues
-import sklearn
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-import string
 from LMT.USV.testVocTraitUsagePerEventType.AcousticAnalysesAllUsv import *
 
 

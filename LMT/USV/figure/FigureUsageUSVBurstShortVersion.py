@@ -2,60 +2,18 @@
 Created by E. Ey on 07/12/2020
 '''
 
-from lmtanalysis.Event import *
-from lmtanalysis.Measure import *
+
 import numpy as np; np.random.seed(0)
-from tkinter.filedialog import askopenfilename
-from lmtanalysis.Util import getMinTMaxTAndFileNameInput, getMinTMaxTInput
-import sqlite3
-from lmtanalysis.FileUtil import getFilesToProcess
-from lmtanalysis.Animal import AnimalPool
-from collections import Counter
-from LMT.USV.lib.vocUtil import *
-import pandas as pd
-import seaborn as sns
-#import pingouin as pg
-from scipy import stats
-from scipy.stats.stats import spearmanr, mannwhitneyu
-from statsmodels.stats.anova import AnovaRM
-from LMT.USV.experimentList.experimentList import getExperimentList,\
-    getAllExperimentList
-from scipy.stats.morestats import wilcoxon
-from matplotlib.lines import Line2D
-import matplotlib.patches as patches
-import matplotlib.gridspec as gridspec
-from LMT.USV.burster.burster import *
-from LMT.USV.figure.figUtil import addJitter
-from LMT.USV.figure.figParameter import *
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import mannwhitneyu, kruskal, ttest_ind
-import matplotlib.image as mpimg
-import statsmodels.formula.api as smf
 
 from LMT.USV.usvDescription.Compute_Number_USVs import *
 from LMT.USV.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import *
 from LMT.USV.figure.burstTraitUsagePerEventContext import *
-from LMT.USV.usvDescription.Compute_Number_USVs import computeNumberUsv,\
-    createDataframeFromJson, getDataFrameWT, getDataFrameKO,\
-    plotNumberUsvDayNight, plotNumberUsvWTWithAge, plotNumberUsvKO,\
-    createDataframeFromJsonNumberUsvPerBurst, plotNumberUsvPerBurstWTBoxplot,\
-    plotNumberUsvPerBurstKOBoxplot
-from LMT.USV.figure.figParameter import getFigureBehaviouralEvents, getColorAge,\
-    getColorWT, getColorKO
-from LMT.USV.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import generateDataframeCorrelationFromDic,\
-    plotCorrelationUsvEvents, plotCorrelationUsvEventsWithUSVWithKo
-from LMT.USV.figure.burstTraitUsagePerEventContext import plotBurstTraitsBoxplotsPerAgePerContextsPerGeno,\
-    plotBurstTraitUsagePerEventContextPerSet2
-from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-import matplotlib.patches as mpatches
+from matplotlib import rc, gridspec
+
 
 if __name__ == '__main__':
 
     print("Code launched.")
-
-    # set font
-    from matplotlib import rc, gridspec
 
     rc('font', **{'family': 'serif', 'serif': ['Arial']})
 
@@ -67,7 +25,7 @@ if __name__ == '__main__':
         question += "\n\t [3] plot figure 7 with bursts characteristics with data for C57BL/6J mice and for Shank3 mice?"
         question += "\n\t [4] plot suppl figure with heatmaps for bursts characteristics with data for C57BL/6J mice and for Shank3 mice?"
         question += "\n"
-        answer = inputFile(question)
+        answer = input(question)
 
         if answer == "1":
             computeNumberUsv(tmin=0, tmax=7776000)

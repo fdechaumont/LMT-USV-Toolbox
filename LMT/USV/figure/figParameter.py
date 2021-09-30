@@ -7,11 +7,8 @@ import matplotlib.pyplot as plt
 
 # colors per age:
 
-
-
 colorWT = "#7f78d2"
 colorKO = "#33cc33"
-
 
 color5we = "#efB1ff"
 color3mo = colorWT
