@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 .project
 .pydevproject
+.settings/org.eclipse.core.resources.prefs
