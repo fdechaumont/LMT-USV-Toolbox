@@ -16,6 +16,7 @@ import statsmodels.formula.api as smf
 from LMT.USV2.figure.figUtil import *
 from LMT.USV2.figure.figParameter import *
 from LMT.USV2.figure.vocUtil import *
+from LMT.USV2.experimentList.experimentList import getAllExperimentList
 import sqlite3
 
 from lmtanalysis.Event import EventTimeLine
@@ -374,7 +375,7 @@ if __name__ == '__main__':
         question += "\n\t [page] simple plot and analyse raw acoustic variables for age in C57BL/6J mice (from stored json file)?"
         question += "\n\t [pko] plot and analyse raw acoustic variables in C57BL/6J and Shank3 KO mice (from stored json file)?"
         question += "\n"
-        answer = input("Action")
+        answer = input(question)
 
         if answer == "e":
             experiments = getAllExperimentList()

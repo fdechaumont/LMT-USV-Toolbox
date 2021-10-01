@@ -25,7 +25,7 @@ import seaborn as sns
 import pandas
 import scipy.stats as stats
 from scipy.stats import ttest_1samp, wilcoxon, ttest_ind, mannwhitneyu
-
+import statsmodels.formula.api as smf
 
 import numpy as np
 
@@ -51,6 +51,11 @@ from LMT.USV2.figure.figParameter import getFigureLabelTrait,\
     getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\
     getColorEvent, getFigureBehaviouralEvents, getFigureVocTraits
 from LMT.USV2.figure.Compute_Number_USVs import getDataFrameWT, getDataFrameKO
+from LMT.USV2.experimentList.experimentList import getAllExperimentList,\
+    getExperimentList
+from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
+from LMT.USV2.figure.featureHeatMap import featureHeatMapPValLegend,\
+    featureHeatMapEffectSizeLegend
 
 '''
 from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
@@ -796,7 +801,7 @@ if __name__ == '__main__':
         question += "\n\t [sfig1] plot suppl fig with heatmaps for acoustic variations across contexts in Shank3 females?"
 
         question += "\n"
-        answer = input("Action: ")
+        answer = input(question)
 
         if answer == 'c':
             '''

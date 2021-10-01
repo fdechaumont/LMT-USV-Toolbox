@@ -345,7 +345,7 @@ if __name__ == '__main__':
         question += "\n\t [2] plot the behavioral profiles for Shank3 mice (females)?"
         question += "\n\t [3] plot the figure 2 with the behavioral profiles for C57BL/6J mice and for Shank3 mice?"
         question += "\n"
-        answer = input("Action:")
+        answer = input(question)
 
         if answer == "1":
             #plot the complete figure for the profiles

@@ -1343,7 +1343,7 @@ if __name__ == '__main__':
         question +="\n\t [pp] plot scatterpoint figure for WT 3 age classes for speed and duration (mean per ind)"
         question +="\n\t [ppko] plot scatterpoint figure for Shank3 and WT for speed and duration (mean per ind)"
         question +="\n"
-        answer = input("Action:")
+        answer = input(question)
         
         if answer=="c":
             #computeEventsOverlappingWithUsv( strain='C57BL/6J', age = '3mo', sex = 'male', eventListToTest=behavEventListShort )

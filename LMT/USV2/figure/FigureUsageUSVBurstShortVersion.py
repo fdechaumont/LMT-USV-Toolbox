@@ -2,26 +2,26 @@
 Created by E. Ey on 07/12/2020
 '''
 
-
 import numpy as np; np.random.seed(0)
 
 from LMT.USV2.usvDescription.Compute_Number_USVs import *
 from LMT.USV2.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import *
 from LMT.USV2.figure.burstTraitUsagePerEventContext import *
+    
 from matplotlib import rc, gridspec
 from LMT.USV2.figure.figParameter import getFigureBehaviouralEvents, getColorAge,\
     getColorWT, getColorKO
 
 from lmtanalysis.Event import *
 from lmtanalysis.Measure import *
-import numpy as np; np.random.seed(0)
+
 from tkinter.filedialog import askopenfilename
 from lmtanalysis.Util import getMinTMaxTAndFileNameInput, getMinTMaxTInput
 import sqlite3
 from lmtanalysis.FileUtil import getFilesToProcess
 from lmtanalysis.Animal import AnimalPool
 from collections import Counter
-from LMT.USV.lib.vocUtil import *
+from LMT.USV2.lib.vocUtil import *
 import pandas as pd
 import seaborn as sns
 #import pingouin as pg
@@ -33,23 +33,28 @@ from scipy.stats.morestats import wilcoxon
 from matplotlib.lines import Line2D
 import matplotlib.patches as patches
 import matplotlib.gridspec as gridspec
-from LMT.USV.burster.burster import *
+
 #from LMT.USV.figure.figUtil import addJitter
-from LMT.USV.figure.figParameter import *
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import mannwhitneyu, kruskal, ttest_ind
 import matplotlib.image as mpimg
 import statsmodels.formula.api as smf
 
+'''
 from LMT.USV.usvDescription.Compute_Number_USVs import *
 from LMT.USV.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import *
 from LMT.USV.figure.burstTraitUsagePerEventContext import *
+'''
 from LMT.USV2.figure.Compute_Number_USVs import computeNumberUsv,\
     createDataframeFromJson, getDataFrameWT, getDataFrameKO,\
     plotNumberUsvDayNight, plotNumberUsvWTWithAge, plotNumberUsvKO,\
     createDataframeFromJsonNumberUsvPerBurst, plotNumberUsvPerBurstWTBoxplot,\
     plotNumberUsvPerBurstKOBoxplot
+from LMT.USV2.experimentList.experimentList import getExperimentList
+from LMT.USV2.figure.Compute_Correlation_USV_Burst_With_Events import generateDataframeCorrelationFromDic,\
+    plotCorrelationUsvEvents, plotCorrelationUsvEventsWithUSVWithKo
 '''
 from LMT.USV.usvDescription.Compute_Number_USVs import computeNumberUsv,\
     createDataframeFromJson, getDataFrameWT, getDataFrameKO,\

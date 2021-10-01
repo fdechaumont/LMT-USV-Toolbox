@@ -14,7 +14,7 @@ import sqlite3
 from lmtanalysis.FileUtil import getFilesToProcess, extractPValueFromLMMResult
 from lmtanalysis.Animal import AnimalPool
 from collections import Counter
-from USV.lib.vocUtil import *
+from LMT.USV2.lib.vocUtil import *
 import pandas as pd
 import seaborn as sns
 #import pingouin as pg
@@ -27,6 +27,7 @@ from LMT.USV2.figure.figUtil import addJitter, getStarsFromPvalues, strainList,\
     sexList, ageList, acousticVariables
 from LMT.USV2.figure.figParameter import colorWT, colorKO, getColorAge,\
     getColorKO, getFigureLabelBurstTraits
+from LMT.USV2.experimentList.experimentList import getAllExperimentList
 '''
 from USV.experimentList.experimentList import getExperimentList,\
     getAllExperimentList
@@ -39,7 +40,7 @@ import matplotlib.gridspec as gridspec
 from USV.figure.figParameter import *
 import matplotlib.pyplot as plt
 import numpy as np
-from USV.burster.burster import *
+
 from scipy.stats import mannwhitneyu, kruskal, ttest_ind
 import statsmodels.formula.api as smf
 import pandas
@@ -640,7 +641,7 @@ if __name__ == '__main__':
         question +="\n\t [p]lot figure 2 with data for C57BL/6J mice and for Shank3 mice?"
         question +="\n\t [e]xtract the mean and sd for different categories?"
         question +="\n"
-        answer = input("Action:" )
+        answer = input(question)
         
         if answer=="c":
                         
