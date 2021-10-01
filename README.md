@@ -3,17 +3,24 @@ Live Mouse Tracker Ultrasonic Vocalization Toolbox
 
 published in TODO
 
+# package needed
+
+- pip install librosa
+
 # synchronisation pipeline
 
 Importation and synchronisation of wav files with LMT are performed by the package LMT.USV.importer
 
-- TODO
 
 # useful links
 
 - test your own .wav files online without any install at https://usv.pasteur.cloud
 - download standalone version of the USV detection program at https://livemousetracker.org, ultrasonic section
 - live mouse tracker's documentation : https://livemousetracker.org
+
+# Converting sampling rate of wav files to 300kHz
+
+- Files should be at 300kHz to perform detection in it. You can convert you files using the LMT.USV.convert.convertTo300kHz.py script. Existing file is kept, a new file with .converted.wav extension is created
 
 # List of scripts used to create figures of the Frontiers article.
 
@@ -40,7 +47,8 @@ Figures' scripts are in the package LMT.USV.figure
 - S8. [page] AcousticAnalysesAllUsv.py
 - S9. [pko] AcousticAnalysesAllUsv.py
 - S10. Separate fig
-- S11 à S13. [p] acousticAnalysesPerContext.py
+- S11. Separate fig
+- S13. [p] acousticAnalysesPerContext.py
 - S14. [page] acousticAnalysesPerContext.py
 - S15. [page] acousticAnalysesPerContext.py
 - S16. [pko] acousticAnalysesPerContext.py
