@@ -5,25 +5,22 @@ Created on 20 janv. 2020
 '''
 
 
+from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
+from LMT.USV2.lib.vocUtil import *
 
-
-
-
-from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
-from LMT.USV.lib.vocUtil import *
-
-from LMT.USV.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
+from LMT.USV2.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
     colorKO, getPaperColor, getFigureVocTraits, getFigureLabelTrait,\
     getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\
     getColorEvent
-from LMT.USV.usvDescription.Compute_Number_USVs import *
+from LMT.USV2.usvDescription.Compute_Number_USVs import *
 import string
 import matplotlib.patches as mpatches
 import matplotlib.image as mpimg
-from LMT.USV.figure.figUtil import getStarsFromPvalues
-from LMT.USV.usvDescription.Compute_Number_USVs import getDataFrameWT,\
+from LMT.USV2.figure.figUtil import getStarsFromPvalues
+from LMT.USV2.usvDescription.Compute_Number_USVs import getDataFrameWT,\
     getDataFrameKO
-from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort
+from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort
+import matplotlib.pyplot as plt
 
 
 def cleanUSVTimeLine( timeLine , selectedTimeLine ):

@@ -5,9 +5,9 @@ Created by E. Ey on 07/12/2020
 
 import numpy as np; np.random.seed(0)
 
-from LMT.USV.usvDescription.Compute_Number_USVs import *
-from LMT.USV.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import *
-from LMT.USV.figure.burstTraitUsagePerEventContext import *
+from LMT.USV2.usvDescription.Compute_Number_USVs import *
+from LMT.USV2.usvEventsCorrelations.Compute_Correlation_USV_Burst_With_Events import *
+from LMT.USV2.figure.burstTraitUsagePerEventContext import *
 from matplotlib import rc, gridspec
 
 

@@ -11,6 +11,9 @@ from LMT.USV.testVocTraitUsagePerEventType.test1 import cleanVoc
 from LMT.USV.lib.vocUtil import *
 from LMT.USV.figure.figParameter import *
 from LMT.USV.testVocTraitUsagePerEventType.AcousticAnalysesAllUsv import *
+import string
+import json
+import matplotlib.pyplot as plt
 
 
 if __name__ == '__main__':

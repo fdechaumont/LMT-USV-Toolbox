@@ -3,7 +3,7 @@ Created by E. Ey on 07/12/2020
 '''
 
 from scripts.ComputeMeasuresIdentityProfileOneMouseAutomatic import mergeProfileOverNights, getProfileValues, getProfileValuesPairs
-from LMT.USV.figure.figParameter import getColorAge, getFigureBehaviouralEvents, getColorWT, getColorKO, getFigureBehaviouralEventsLabels
+from LMT.USV2.figure.figParameter import getColorAge, getFigureBehaviouralEvents, getColorWT, getColorKO, getFigureBehaviouralEventsLabels
 
 
 from lmtanalysis.FileUtil import getJsonFileToProcess, getStarsFromPvalues

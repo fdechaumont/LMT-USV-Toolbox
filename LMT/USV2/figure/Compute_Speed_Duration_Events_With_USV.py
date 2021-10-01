@@ -11,12 +11,13 @@ from lmtanalysis.Util import getMinTMaxTAndFileNameInput, getMinTMaxTInput
 
 from scipy.stats import mannwhitneyu
 
-from LMT.USV.experimentList.experimentList import getExperimentList    
+from LMT.USV2.experimentList.experimentList import getExperimentList    
+import matplotlib.pyplot as plt
 
 from scipy.spatial.transform import rotation
-from LMT.USV.figure.figParameter import *
+from LMT.USV2.figure.figParameter import *
 
-from LMT.USV.figure.figUtil import getStarsFromPvalues, addJitter
+from LMT.USV2.figure.figUtil import getStarsFromPvalues, addJitter
 
 from scipy.stats.morestats import wilcoxon
 import string

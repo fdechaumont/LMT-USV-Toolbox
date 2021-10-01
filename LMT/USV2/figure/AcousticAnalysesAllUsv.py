@@ -12,12 +12,12 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import statsmodels.formula.api as smf
-from LMT.USV.figure.figParameter import getFigureLabelTrait, getColorAge, getColorWT, getColorKO
-from LMT.USV.figure.figUtil import getStarsFromPvalues
-from LMT.USV.figure.figParameter import *
-from LMT.USV.figure.vocUtil import *
+
+from LMT.USV2.figure.figUtil import *
+from LMT.USV2.figure.figParameter import *
+from LMT.USV2.figure.vocUtil import *
 import sqlite3
-from LMT.USV.lib.vocUtil import ageList
+
 from lmtanalysis.Event import EventTimeLine
 import json
 import sklearn
@@ -27,6 +27,10 @@ from lmtanalysis.Util import getMinTMaxTInput
 import pandas
 import string
 import matplotlib.patches as mpatches
+from LMT.USV2.figure.figUtil import sexList, strainList, yMinVar, yMaxVar
+from LMT.USV2.figure.figParameter import getFigureVocTraits
+from lmtanalysis.Animal import AnimalPool
+from LMT.USV2.lib.USVUtil import getStrainAgeSexPairGenoPerFile
 
 
 def cleanUSVTimeLine( timeLine , selectedTimeLine ):
