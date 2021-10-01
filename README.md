@@ -58,3 +58,7 @@ Figures' scripts are in the package LMT.USV.figure
 - S20. [sfig1] acousticAnalysesPerContext.py
 - S21. [ppko] Compute_Speed_Duration_Events_With_Usv.py
 
+# Watch a presentation about USV and LMT:
+
+[![IMAGE ALT TEXT](doc/fabrice_de_chaumont_ultrasonic_conference.jpg)](https://www.youtube.com/watch?v=yIBK8wn3NKg&t=1296s "USV LMT")
+
