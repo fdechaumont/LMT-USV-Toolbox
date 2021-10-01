@@ -5,26 +5,21 @@ Created on 10 juin 2021
 '''
 
 import pandas as pd
-from LMT.USV.ml.voc2event.randomForestTester import RandomForestTester
+
 import pickle
 import os
 from shutil import copyfile
 from pathlib import Path
 
-from LMT.USV.volcano.validation.USVDataML import getAllUSV_ML_DataForWav,\
-    grabUSVDataML
-from LMT.USV.volcano.validation.WavData import getAllWavData
-from LMT.USV.Processing.Wav import Wav
+
 import matplotlib.pyplot as plt
 from matplotlib import patches
+from LMT.USV2.importer.USVDataML import getAllUSV_ML_DataForWav, grabUSVDataML
+from LMT.USV2.importer.randomForestTester import RandomForestUnit
+from LMT.USV2.lib.Wav import Wav
+from LMT.USV2.importer.WavData import getAllWavData
 
 def training( ):
-    #cleanVoc( eventTimeLineVoc )
-
-    #file = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/20210421_usv_2days_B6_F23_F24_Experiment 843.sqlite"
-    #connection = sqlite3.connect( file )
-    
-    #D:\20210421_usv_2days_B6_F23_F24_Experiment 843\usv\voc - strict
     
     folderVoc = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/voc - strict/voc"
     folderNoise = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/noise"
@@ -42,8 +37,6 @@ def training( ):
         a = d.getAttributes()
         a.append( 1 ) # voc targetId
         attributeVoc.append( a )
-
-    
     
     # machine learning
     
@@ -58,7 +51,7 @@ def training( ):
     print ( df ) 
     
     
-    rf = RandomForestTester( df, testCLF=True , showAsATree = False , showConfusionMatrix=False,realClassNames=["Noise","Voc"] )    
+    rf = RandomForestUnit( df, testCLF=True , showAsATree = False , showConfusionMatrix=False,realClassNames=["Noise","Voc"] )    
         
     pickle.dump( rf, open("trainingSet.bin", 'wb'))
     
@@ -175,42 +168,17 @@ def predictor( saveJPG = False ):
                     
                 plt.close()
         
-        '''
-        a = d.getAttributes()
-    
-        pred = rf.clf.predict( [ a ] )[0]
-        #pred = rf.clf.predict_proba( [ a ] )[0] # with probabilities
-        
-        print( pred )
-        '''
-        
-        '''
-        wavFile = ntpath.basename( d.wavFile )
-        sourceWav = folderToProcess + "/" + wavFile
-        
-        dataFile = ntpath.basename( d.dataFile )
-        sourceData = folderToProcess + "/" + dataFile
-            
-        if pred == 0:
-            print( "--> noise")            
-            targetWav = folderNoise + "/" + wavFile
-            targetData = folderNoise + "/" + dataFile
-        else:    
-            print( "--> voc")
-            targetWav = folderVoc + "/" + wavFile
-            targetData = folderVoc + "/" + dataFile
-        
-        copyFile( sourceWav, targetWav )
-        copyFile( sourceData, targetData )
-        '''
         
     
 if __name__ == '__main__':
     
     print("Test of machine learning per USV in each file")
-    #training()
     predictor( saveJPG = False )
     
+    # train the system with your own USVs classification
+    
+    # training()
+
     print("All Done.")
     
     

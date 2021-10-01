@@ -5,38 +5,14 @@ Created on 15 avr. 2021
 '''
 from tkinter.filedialog import askopenfile
 from tkinter import Tk
-
-
+import os
+from experimental.voc.analysis.quantif.Voc import Voc
 import sqlite3
 from lmtanalysis.Animal import AnimalPool
 from lmtanalysis.Event import EventTimeLine
-from LMT.USV.importer.Voc import Voc
-
-import pickle
-import os
+from LMT.USV2.importer.importUtil import fileBiggerSplit, getDataFileMatch
 
 
-
-import time
-from LMT.USV.importer.USVDataML import USVDataML
-
-def fileBiggerSplit( fileName ):
-
-    fileName = fileName.replace("-","_")
-    fileName = fileName.replace(".","_")    
-    result =""
-    for s in fileName.split("_"):
-        if len( s ) > len( result ):
-            result = s
-    return result
-
-def getDataFileMatch( dataFiles, number ):
-    for file in dataFiles:
-        if not ".txt" in file:
-            continue
-        if number in file:
-            return file
-    return None
         
 def getAllUSVSeq( connection ):
     
@@ -51,7 +27,7 @@ def getAllUSVSeq( connection ):
     print( query )
     c.execute( query )
     all_rows = c.fetchall()
-    print( "number of USV seq found: " , len( all_rows ))
+
     resultDic = {}
     
     for row in all_rows:
@@ -66,33 +42,12 @@ def getAllUSVSeq( connection ):
         
 if __name__ == '__main__':
     
-    print("This script will import vocalizations in an LMT database.")
-    print("It uses machine learning to select if USV should be imported or not")    
-    
-    print("Loading predictor...")
-    rf = pickle.load( open("trainingSet.bin", 'rb'))
-    
-    accuracyList = []
-    accuracyStdList = []
-    featureImportanceList = []
-    
-    accuracyList.append( rf.accuracy )
-    accuracyStdList.append( rf.accuracyError )
-    featureImportanceList.append( rf.feature_importances )
-            
-    print("******** Results")
-    
-    print( "Accuracy: ", accuracyList )
-    print( "Accuracy std: " , accuracyStdList )
-    print( "Feature importance: " , featureImportanceList )
-    
-    print("Machine learning : Predictor Loaded.")
-    
-    
-    
-    print( "--------")
-    
+    print("This script will import vocalizations in an LMT database.")    
+    print("Your USVs should be located in databasefile.sqlite/usv/voc/ folder")
+    print("All wav file in this folder will be imported")
     print("Select database to import vocalizations.")
+    
+    
     
     preTriggerFrameMs = 1000
     nbOfPreTriggerFrame = preTriggerFrameMs / 33.33
@@ -108,7 +63,6 @@ if __name__ == '__main__':
         print("No file selected")
         quit() 
     
-    startTime = time.time()
     
     dataBaseFile = inputFile.name
     print( "File is : ", dataBaseFile )
@@ -123,9 +77,9 @@ if __name__ == '__main__':
 
     print( "Path: " , path )
     #allUSVPath = path + "/usv/voc/"
-    allUSVSelected = path + "/usv/"
+    allUSVSelected = path + "/usv/voc/"
     
-    print( "Extracting wav files numbers in usv/")
+    print( "Extracting wav files numbers in usv/voc")
     numberList = []
     files = os.listdir( allUSVSelected )
     
@@ -181,10 +135,8 @@ if __name__ == '__main__':
     for number in numberList:
         
         if not number in USVSeqDic:
-            print( "Warning: they key #" , number , "does not exist in wav files.")
-            print( "Check if USV seq has been correctly recorded in the database.")
-            inputFile("continue")
-            
+            print("Warning: they key #" , number , " does not exist in wav files.")
+            continue
         
         # retreive database USV seq        
         startFrame = USVSeqDic[number]
@@ -234,18 +186,11 @@ if __name__ == '__main__':
                 
                 # the avisoft trigger to consider is the first one in the database
                 # we remove the number of frame used in pre-trigger.
-                                
+                
+                
                 voc.setStartFrame( int ( startFrame - nbOfPreTriggerFrame + startOffsetMs/33.3333 ) )
  
-                # machine learning USV test:
-                USVmachineLearningAttributes = USVDataML( voc ).getAttributes()
-                pred = rf.clf.predict( [ USVmachineLearningAttributes ] )[0]
-                
-                if pred == 1: 
-                    eventTimeLineVoc.addEvent( voc.getAsEvent(), noCheck=True )
-                    print("->USV")
-                else:
-                    print("->not USV")
+                eventTimeLineVoc.addEvent( voc.getAsEvent(), noCheck=True )
  
     # remove the vocs that are doubled because of pre-filter effect
     
@@ -270,10 +215,8 @@ if __name__ == '__main__':
  
     print( "Saving vocs...")
     eventTimeLineVoc.endRebuildEventTimeLine(connection, deleteExistingEvent = True )
-                    
-    totalTime = time.time() - startTime
-    import datetime    
-    print("Execution time (h:m:s):" , str(datetime.timedelta(seconds=totalTime)) )
+               
+    
     print("All done.")
     
     
