@@ -7,14 +7,18 @@ Created on 20 janv. 2020
 import matplotlib.image as mpimg
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-from LMT.USV.testVocTraitUsagePerEventType.test1 import cleanVoc
-from LMT.USV.lib.vocUtil import *
-from LMT.USV.figure.figParameter import *
-from LMT.USV.testVocTraitUsagePerEventType.AcousticAnalysesAllUsv import *
+from LMT.USV2.lib.vocUtil import *
+from LMT.USV2.figure.figParameter import *
+from LMT.USV2.testVocTraitUsagePerEventType.AcousticAnalysesAllUsv import *
 import string
+import pandas as pd
 import json
 import matplotlib.pyplot as plt
+from LMT.USV2.figure.AcousticAnalysesAllUsv import plotAcousticVarWTBoxplot,\
+    plotAcousticVarKOBoxplot
+from LMT.USV2.figure.figUtil import ageList, yMinVar, yMaxVar
 
+import matplotlib.patches as mpatches
 
 if __name__ == '__main__':
     '''

@@ -5,23 +5,71 @@ Created on 20 janv. 2020
 '''
 
 
-from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
-from LMT.USV2.lib.vocUtil import *
 
-from LMT.USV2.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
+
+from tkinter.filedialog import askopenfilename
+import sqlite3
+import os
+import numpy as np
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+
+#from USV.figure.featureHeatMap import featureHeatMapPValLegend, featureHeatMapEffectSizeLegend
+from lmtanalysis.Animal import AnimalPool
+from lmtanalysis.Event import Event, EventTimeLine
+from lmtanalysis.Measure import oneDay, oneHour, oneMinute
+from lmtanalysis.Util import getMinTMaxTAndFileNameInput, convert_to_d_h_m_s,\
+    getMinTMaxTInput
+import matplotlib.pyplot as plt
+from matplotlib import ticker
+import seaborn as sns
+import pandas
+import scipy.stats as stats
+from scipy.stats import ttest_1samp, wilcoxon, ttest_ind, mannwhitneyu
+
+
+import numpy as np
+
+from scipy import signal
+from scipy.io import wavfile
+import os
+import wave
+import pylab
+from lmtanalysis.FileUtil import getFilesToProcess, extractPValueFromLMMResult
+import pandas as pd
+from pandas.core.frame import DataFrame
+from scipy import stats
+
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+from statsmodels.stats.anova import anova_lm
+import json
+from LMT.USV2.figure.figUtil import strainList, sexList, yMaxVar, yMinVar,\
+    getStarsFromPvalues
+from LMT.USV2.figure.Compute_Speed_Duration_Events_With_USV import ageList
+from LMT.USV2.lib.USVUtil import getStrainAgeSexPairGenoPerFile
+from LMT.USV2.figure.figParameter import getFigureLabelTrait,\
+    getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\
+    getColorEvent, getFigureBehaviouralEvents, getFigureVocTraits
+from LMT.USV2.figure.Compute_Number_USVs import getDataFrameWT, getDataFrameKO
+
+'''
+from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
+from LMT.USV.lib.vocUtil import *
+from LMT.USV.experimentList.experimentList import getAllExperimentList, getExperimentList
+from LMT.USV.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
     colorKO, getPaperColor, getFigureVocTraits, getFigureLabelTrait,\
     getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\
     getColorEvent
-from LMT.USV2.usvDescription.Compute_Number_USVs import *
+from LMT.USV.usvDescription.Compute_Number_USVs import *
+'''
 import string
 import matplotlib.patches as mpatches
 import matplotlib.image as mpimg
-from LMT.USV2.figure.figUtil import getStarsFromPvalues
-from LMT.USV2.usvDescription.Compute_Number_USVs import getDataFrameWT,\
-    getDataFrameKO
-from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort
-import matplotlib.pyplot as plt
-
+'''
+from LMT.USV.figure.figUtil import getStarsFromPvalues
+from LMT.USV.usvDescription.Compute_Number_USVs import getDataFrameWT, getDataFrameKO
+from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort
+'''
 
 def cleanUSVTimeLine( timeLine , selectedTimeLine ):
     
@@ -97,7 +145,7 @@ def computeAcousticVariablesPerContext(experiments, tmin, tmax, jsonExtension, e
         # clean the voc timeline using the "excluded" metadata
         print("Cleaning voc with excluded metadata")
         vocTimeLine = EventTimeLine(connection, "Voc", minFrame=tmin, maxFrame=tmax, loadEventIndependently=True)
-        cleanVoc(vocTimeLine)
+        
         print("remaining voc events: ", len(vocTimeLine.eventList))
 
         # Select the voc sequences that are overlapping with the event to test:

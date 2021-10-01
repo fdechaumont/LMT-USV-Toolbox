@@ -98,7 +98,7 @@ def computeEventsOverlappingWithUsv( strain = None, age = None, sex = None, even
             print("loading complete usv timeline dictionary")
             # all USVs
             usvTimeLine = EventTimeLine( connection, "Voc", idA=None, minFrame = tmin, maxFrame = tmax, loadEventIndependently=True )
-            cleanVoc(usvTimeLine)
+            
             USVTimeLineCompleteDictionnary = usvTimeLine.getDictionnary()
             
             #load all event timelines
@@ -229,7 +229,7 @@ def computeEventsOverlappingWithUsvFast(strain=None, age=None, sex=None, tmin=0,
         print("loading complete usv timeline dictionary")
         # all USVs
         usvTimeLine = EventTimeLine(connection, "Voc", idA=None, minFrame=tmin, maxFrame=tmax, loadEventIndependently=True)
-        cleanVoc(usvTimeLine)
+        
         USVTimeLineCompleteDictionnary = usvTimeLine.getDictionnary()
 
         # load all event timelines

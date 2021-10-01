@@ -419,7 +419,7 @@ if __name__ == '__main__':
                 #clean the voc timeline using the "excluded" metadata
                 print("Cleaning voc with excluded metadata")
                 vocTimeLine = EventTimeLine( connection, "Voc", minFrame = tmin, maxFrame = tmax, loadEventIndependently = True )
-                cleanVoc( vocTimeLine )
+                
                 print("remaining voc events: ", len(vocTimeLine.eventList))
 
                 #Select the vocalisations:
