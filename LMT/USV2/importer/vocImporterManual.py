@@ -6,11 +6,12 @@ Created on 15 avr. 2021
 from tkinter.filedialog import askopenfile
 from tkinter import Tk
 import os
-from experimental.voc.analysis.quantif.Voc import Voc
+
 import sqlite3
 from lmtanalysis.Animal import AnimalPool
 from lmtanalysis.Event import EventTimeLine
 from LMT.USV2.importer.importUtil import fileBiggerSplit, getDataFileMatch
+from LMT.USV2.importer.Voc import Voc
 
 
         

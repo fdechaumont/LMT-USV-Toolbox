@@ -54,7 +54,7 @@ import pylab
 
 import pandas as pd
 
-from LMT.USV.lib.vocUtil import *
+
 from LMT.USV2.figure.figParameter import getFigureVocTraits,\
     getFigureBehaviouralEvents, getFigureLabelTrait,\
     getFigureBehaviouralEventsLabels, getColorKO, getColorWT
@@ -63,18 +63,6 @@ from scripts.Compute_Bad_Orientation_Estimation import isSameSign
 from LMT.USV2.experimentList.experimentList import getAllExperimentList,\
     getExperimentList
 from LMT.USV2.figure.featureHeatMap import featureHeatMap
-'''
-from LMT.USV.experimentList.experimentList import getExperimentList, getAllExperimentList
-from scripts.Compute_Bad_Orientation_Estimation import isSameSign
-'''
-#from anaconda_project.internal.slugify import slugify
-from LMT.USV.figure.figParameter import *
-'''
-from LMT.USV.figure.figUtil import askExperimentToProcess
-from LMT.USV.figure.featureHeatMap import featureHeatMap
-'''
-
-
 
 
 def getVocCommonToEventTimeLine( eventTimeLineVoc, eventTimeLineEvent ):

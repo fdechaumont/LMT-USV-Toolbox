@@ -3,9 +3,9 @@ Created on 17 févr. 2020
 
 @author: Fab
 '''
+from LMT.USV2.lib.USVUtil import sortVocInTime
+from LMT.USV2.lib.USVBurst import USVBurst
 
-from LMT.USV.lib.vocUtil import sortVocInTime
-from LMT.USV.lib.USVBurst import USVBurst
 
 
 

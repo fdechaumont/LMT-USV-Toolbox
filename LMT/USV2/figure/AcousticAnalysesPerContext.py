@@ -57,24 +57,10 @@ from LMT.USV2.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEve
 from LMT.USV2.figure.featureHeatMap import featureHeatMapPValLegend,\
     featureHeatMapEffectSizeLegend
 
-'''
-from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort2
-from LMT.USV.lib.vocUtil import *
-from LMT.USV.experimentList.experimentList import getAllExperimentList, getExperimentList
-from LMT.USV.figure.figParameter import getFigureBehaviouralEvents, colorWT,\
-    colorKO, getPaperColor, getFigureVocTraits, getFigureLabelTrait,\
-    getFigureBehaviouralEventsLabels, getColorAge, getColorWT, getColorKO,\
-    getColorEvent
-from LMT.USV.usvDescription.Compute_Number_USVs import *
-'''
 import string
 import matplotlib.patches as mpatches
 import matplotlib.image as mpimg
-'''
-from LMT.USV.figure.figUtil import getStarsFromPvalues
-from LMT.USV.usvDescription.Compute_Number_USVs import getDataFrameWT, getDataFrameKO
-from LMT.USV.figure.vocTraitUsagePerEventContext import plotVocTraitUsagePerEventContextPerSetShort
-'''
+
 
 def cleanUSVTimeLine( timeLine , selectedTimeLine ):
     

@@ -61,7 +61,7 @@ import pandas as pd
 from scripts.Compute_Bad_Orientation_Estimation import isSameSign
 
 
-from LMT.USV.figure.figParameter import *
+
 from LMT.USV2.figure.figParameter import getFigureBurstTraits,\
     getFigureBehaviouralEvents, getFigureLabelBurstTraits,\
     getFigureBehaviouralEventsLabels, getColorWT, getColorKO, getColorAge
@@ -69,11 +69,6 @@ from LMT.USV2.lib.burster import createBurstFromVoc
 from anaconda_project.internal import slugify
 from LMT.USV2.figure.featureHeatMap import featureHeatMap
 from LMT.USV2.experimentList.experimentList import getExperimentList
-'''
-from LMT.USV.figure.figUtil import askExperimentToProcess
-from LMT.USV.burster.burster import createBurstFromVoc
-from LMT.USV.figure.featureHeatMap import featureHeatMap
-'''
 
 
 
