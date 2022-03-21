@@ -4,9 +4,11 @@ Created on 10 juin 2021
 @author: Fab
 '''
 import os
-from LMT.USV.vocImporter3.vocImporter import fileBiggerSplit, getDataFileMatch
-from experimental.voc.analysis.quantif.Voc import Voc
+
+
 import numpy as np
+from LMT.USV2.importer.importUtil import fileBiggerSplit, getDataFileMatch
+from LMT.USV2.importer.Voc import Voc
 
 def getAllWavData( folder , limit=None ):
     print( "Extracting wav files numbers in " , folder )
