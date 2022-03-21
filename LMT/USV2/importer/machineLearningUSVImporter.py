@@ -99,7 +99,7 @@ def predictor( saveJPG = False ):
     print("- Starting prediction ")
     
     #folderToProcess = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/all"
-    folderToProcess = "D:/20210423_usv_2days_B6_F25_F26_Experiment 6791/usv"
+    folderToProcess = "D:/usv_2days/new_voc/20210430_usv_2days_5185_5165_Experiment 7272/usv/voc"
     
     folderVoc = str ( os.path.dirname( folderToProcess ) ) +"/autoVoc"
     folderNoise = str ( os.path.dirname( folderToProcess ) ) +"/autoNoise"
@@ -174,6 +174,7 @@ def predictor( saveJPG = False ):
 if __name__ == '__main__':
     
     print("Test of machine learning per USV in each file")
+
     #predictor( saveJPG = False )
     
     # train the system with your own USVs classification
