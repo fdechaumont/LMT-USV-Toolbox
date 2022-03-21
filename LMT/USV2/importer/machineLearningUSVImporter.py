@@ -15,14 +15,15 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib import patches
 from LMT.USV2.importer.USVDataML import getAllUSV_ML_DataForWav, grabUSVDataML
-from LMT.USV2.importer.randomForestTester import RandomForestUnit
+
 from LMT.USV2.lib.Wav import Wav
 from LMT.USV2.importer.WavData import getAllWavData
+from LMT.USV2.importer.randomForestTester import RandomForestTester
 
 def training( ):
     
-    folderVoc = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/voc - strict/voc"
-    folderNoise = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/noise"
+    folderVoc = "D:/usv_2days/new_voc/20210430_usv_2days_5185_5165_Experiment 7272/usv/voc"
+    folderNoise = "D:/usv_2days/new_voc/20210430_usv_2days_5185_5165_Experiment 7272/usv/noise"
 
     dataVoc = getAllUSV_ML_DataForWav( folderVoc , limit = None ) #limit = 10000
     dataNoise = getAllUSV_ML_DataForWav( folderNoise , limit = None )
@@ -51,7 +52,7 @@ def training( ):
     print ( df ) 
     
     
-    rf = RandomForestUnit( df, testCLF=True , showAsATree = False , showConfusionMatrix=False,realClassNames=["Noise","Voc"] )    
+    rf = RandomForestTester( df, testCLF=True , showAsATree = False , showConfusionMatrix=False,realClassNames=["Noise","Voc"] )    
         
     pickle.dump( rf, open("trainingSet.bin", 'wb'))
     
@@ -98,7 +99,7 @@ def predictor( saveJPG = False ):
     print("- Starting prediction ")
     
     #folderToProcess = "D:/20210421_usv_2days_B6_F23_F24_Experiment 843/usv/all"
-    folderToProcess = "D:/20210423_usv_2days_B6_F25_F26_Experiment 6791/usv"
+    folderToProcess = "D:/usv_2days/new_voc/20210430_usv_2days_5185_5165_Experiment 7272/usv/voc"
     
     folderVoc = str ( os.path.dirname( folderToProcess ) ) +"/autoVoc"
     folderNoise = str ( os.path.dirname( folderToProcess ) ) +"/autoNoise"
@@ -173,11 +174,11 @@ def predictor( saveJPG = False ):
 if __name__ == '__main__':
     
     print("Test of machine learning per USV in each file")
-    predictor( saveJPG = False )
+    #predictor( saveJPG = True )
     
     # train the system with your own USVs classification
     
-    # training()
+    training()
 
     print("All Done.")
     
