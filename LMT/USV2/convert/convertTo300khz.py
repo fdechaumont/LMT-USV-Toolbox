@@ -26,25 +26,22 @@ def convert( file ):
 
     
     if frameRate == 300000:
-        print("File is already in 300kHz: " , file )
-        return                 
+        print("File is already in 300kHz: " , file , "... (converting anyway)")
+                                 
+    print("Converting sampling rate to 300kHz...")
+    
+    try:
+        duration = librosa.get_duration(filename=file)
+        print("Duration: " , duration , " seconds")
+        y, sr = librosa.load( file , mono=True, sr=300000)
         
-    print("Frame rate : " , frameRate )
-    if frameRate != 300000:            
-        print("Converting sampling rate to 300kHz...")
-        
-        try:
-            duration = librosa.get_duration(filename=file)
-            print("Duration: " , duration , " seconds")
-            y, sr = librosa.load( file , mono=True, sr=300000)
-            
-            convertedFile = file+".converted.wav"                 
-            sf.write( convertedFile, y, sr, subtype='PCM_16')
-            print("Converting framerate done")
-        
-        except:
-            print("Error in conversion")                
-            return
+        convertedFile = file+".converted.wav"                 
+        sf.write( convertedFile, y, sr, subtype='PCM_16')
+        print("Converting framerate done")
+    
+    except:
+        print("Error in conversion")                
+        return
         
     # end convert
 
