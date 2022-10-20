@@ -166,9 +166,10 @@ if __name__ == '__main__':
     for number in numberList:
         
         if not number in USVSeqDic:
-            print( "Warning: they key #" , number , "does not exist in wav files.")
+            print( "Warning: they key #" , number , "has a problem. (usv seq number not in database or problem with wav file not processed)")
             print( "Check if USV seq has been correctly recorded in the database.")
-            inputFile("continue")
+            input("enter to continue")
+            continue
             
         
         # retreive database USV seq        
