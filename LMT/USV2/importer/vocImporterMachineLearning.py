@@ -24,10 +24,10 @@ from LMT.USV2.importer.importUtil import fileBiggerSplit, getDataFileMatch
         
 def getAllUSVSeq( connection ):
     
-    # build the dictionnary containing all the USV seq recorded live in LMT.
+    # build the dictionary containing all the USV seq recorded live in LMT.
     # extracts from the description of the USV seq the startFrame and the number contained in the file. 
     # as the USV seq are queried in startframe DESC, we only keep the first record of each voc record attempt from avisoft, which is the one to consider.
-    # result is a dictionnary with k= the number in the file name and the value= corresponding startFrame.
+    # result is a dictionary with k= the number in the file name and the value= corresponding startFrame.
     
     c = connection.cursor()
 
@@ -136,16 +136,27 @@ if __name__ == '__main__':
     dataFiles = []
     
     dataFiles = os.listdir( allUSVSelected )
+    matchFileLoadError = False
+    errorList = []
     for number in numberList:
         
         dataFile = getDataFileMatch( dataFiles, number )
         
         if dataFile == None:
             print( "Error: data text file not found for number: " , number )
-            print( "Quit." )
-            quit()
+            errorList.append( number )  
+            matchFileLoadError = True          
+            continue
             
         print( "Match : " , dataFile )
+    
+    if matchFileLoadError:
+        print( "Error: data text file not found for the following file numbers:")
+        for n in errorList:
+            print( n )
+        print( "Quit." )
+        quit()
+        
         
     print("All data files found.")
     

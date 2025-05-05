@@ -17,10 +17,10 @@ from LMT.USV2.importer.Voc import Voc
         
 def getAllUSVSeq( connection ):
     
-    # build the dictionnary containing all the USV seq recorded live in LMT.
+    # build the dictionary containing all the USV seq recorded live in LMT.
     # extracts from the description of the USV seq the startFrame and the number contained in the file. 
     # as the USV seq are queried in startframe DESC, we only keep the first record of each voc record attempt from avisoft, which is the one to consider.
-    # result is a dictionnary with k= the number in the file name and the value= corresponding startFrame.
+    # result is a dictionary with k= the number in the file name and the value= corresponding startFrame.
     
     c = connection.cursor()
 

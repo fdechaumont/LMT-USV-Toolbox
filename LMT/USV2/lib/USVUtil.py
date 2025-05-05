@@ -30,28 +30,28 @@ def getStrainAgeSexPairGenoPerFile ( connection ):
     pool = AnimalPool( )
     pool.loadAnimals( connection )
     
-    strainFile = pool.animalDictionnary[1].strain
+    strainFile = pool.animalDictionary[1].strain
     #print( "strain: ", strainFile )
     
-    ageFile = pool.animalDictionnary[1].age
+    ageFile = pool.animalDictionary[1].age
     #print( "age: ", ageFile )
     
-    if pool.animalDictionnary[1].sex == pool.animalDictionnary[2].sex:
-            sexFile = pool.animalDictionnary[1].sex
+    if pool.animalDictionary[1].sex == pool.animalDictionary[2].sex:
+            sexFile = pool.animalDictionary[1].sex
     else:
         sexFile = "mixed"
     #print( "sex: ", sexFile )
     
-    rfid1 = int(pool.animalDictionnary[1].RFID[-7:])
-    rfid2 = int(pool.animalDictionnary[2].RFID[-7:])
+    rfid1 = int(pool.animalDictionary[1].RFID[-7:])
+    rfid2 = int(pool.animalDictionary[2].RFID[-7:])
     minRFID = min ( rfid1, rfid2 )
     maxRFID = max ( rfid1, rfid2 )
      
     pairFile = "{}-{}".format( minRFID, maxRFID )
     #print( "pair ", pairFile )
     
-    geno1 = pool.animalDictionnary[1].genotype
-    geno2 = pool.animalDictionnary[2].genotype
+    geno1 = pool.animalDictionary[1].genotype
+    geno2 = pool.animalDictionary[2].genotype
     
     if geno1 == geno2:
         genotype = "{}-{}".format( geno1, geno2 )
@@ -236,9 +236,9 @@ def formatTimeAxisForTimeLine( ax ):
     ax.xaxis.set_minor_locator(ticker.MultipleLocator( 30 * 60 * 60 ))
 
 
-def checkIfOverlapWith(eventBehavToCheck, vocDictionnary):
+def checkIfOverlapWith(eventBehavToCheck, vocDictionary):
     for t in range(eventBehavToCheck.startFrame, eventBehavToCheck.endFrame + 1):
-        if t in vocDictionnary:
+        if t in vocDictionary:
             return True
 
     return False

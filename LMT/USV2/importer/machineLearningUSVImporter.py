@@ -21,9 +21,13 @@ from LMT.USV2.importer.WavData import getAllWavData
 from LMT.USV2.importer.randomForestTester import RandomForestTester
 
 def training( ):
-    
+
+    '''    
     folderVoc = "D:/USV training stuff with experiment 843/voc - strict/voc"
     folderNoise = "D:/USV training stuff with experiment 843/noise"
+    '''
+    folderVoc = "C:/Users/Fab/Downloads/training_set_usv_noise/voc"
+    folderNoise = "C:/Users/Fab/Downloads/training_set_usv_noise/noise"
 
     dataVoc = getAllUSV_ML_DataForWav( folderVoc , limit = None ) #limit = 10000
     dataNoise = getAllUSV_ML_DataForWav( folderNoise , limit = None )

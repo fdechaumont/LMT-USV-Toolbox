@@ -117,7 +117,7 @@ class RandomForestTester:
         #print ( train[features] )
         
         self.clf.fit(train[features], y)
-        
+         
         if showAsATree == True :
             import graphviz             
             dot_data = tree.export_graphviz(self.clf, out_file=None , feature_names= features, class_names=self.targetCorrespondanceNames, filled=True, rounded=True, special_characters=True  ) 

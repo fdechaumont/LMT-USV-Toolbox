@@ -28,10 +28,10 @@ import json
 import numpy as np
 import sqlite3
 
-def checkIfOverlapWith( eventBehavToCheck , vocDictionnary ):
+def checkIfOverlapWith( eventBehavToCheck , vocDictionary ):
     
     for t in range ( eventBehavToCheck.startFrame, eventBehavToCheck.endFrame+1 ) :
-        if t in vocDictionnary:
+        if t in vocDictionary:
             return True
             
     return False
@@ -99,7 +99,7 @@ def computeEventsOverlappingWithUsv( strain = None, age = None, sex = None, even
             # all USVs
             usvTimeLine = EventTimeLine( connection, "Voc", idA=None, minFrame = tmin, maxFrame = tmax, loadEventIndependently=True )
             
-            USVTimeLineCompleteDictionnary = usvTimeLine.getDictionnary()
+            USVTimeLineCompleteDictionary = usvTimeLine.getDictionary()
             
             #load all event timelines
             print("Loading all timelines")
@@ -107,28 +107,28 @@ def computeEventsOverlappingWithUsv( strain = None, age = None, sex = None, even
             
             eventToTestTimeLine = {}
             
-            for animal in pool.animalDictionnary.keys():
+            for animal in pool.animalDictionary.keys():
     
-                print ( "loading  for animal: ", pool.animalDictionnary[animal].RFID)
+                print ( "loading  for animal: ", pool.animalDictionary[animal].RFID)
                 eventToTestTimeLine[animal] = EventTimeLine( connection, eventToTest, idA=animal, minFrame=tmin, maxFrame=tmax )
             
             # dic per animal and per file        
             eventToTestTimeLineWithoutOverlap = {}
             eventToTestTimeLineWithOverlap = {}
             
-            for animal in pool.animalDictionnary.keys():
+            for animal in pool.animalDictionary.keys():
     
                 eventToTestTimeLineWithoutOverlap[animal] = EventTimeLine( connection, "EvToTestWithoutOverlap", idA=animal, loadEvent=False )
                 eventToTestTimeLineWithOverlap[animal] = EventTimeLine( connection, "EvToTestWithOverlap", idA=animal, loadEvent=False )
                 
-            for animal in pool.animalDictionnary.keys():
+            for animal in pool.animalDictionary.keys():
                 eventToBuildOverlapDic = {}
                 eventToBuildNoOverlapDic = {}
                 print("Processing animal ",animal )
                 
                 for eventBehavToCheck in eventToTestTimeLine[animal].getEventList():
                                         
-                    over = checkIfOverlapWith( eventBehavToCheck , USVTimeLineCompleteDictionnary )    
+                    over = checkIfOverlapWith( eventBehavToCheck , USVTimeLineCompleteDictionary )    
     
                     if (over == True ):
                         for t in range ( eventBehavToCheck.startFrame, eventBehavToCheck.endFrame+1 ) :
@@ -140,8 +140,8 @@ def computeEventsOverlappingWithUsv( strain = None, age = None, sex = None, even
         
                 print( "build" )
         
-                eventToTestTimeLineWithOverlap[animal].reBuildWithDictionnary( eventToBuildOverlapDic )
-                eventToTestTimeLineWithoutOverlap[animal].reBuildWithDictionnary(eventToBuildNoOverlapDic)
+                eventToTestTimeLineWithOverlap[animal].reBuildWithDictionary( eventToBuildOverlapDic )
+                eventToTestTimeLineWithoutOverlap[animal].reBuildWithDictionary(eventToBuildNoOverlapDic)
                 
 
             print("Event time lines done")
@@ -151,20 +151,20 @@ def computeEventsOverlappingWithUsv( strain = None, age = None, sex = None, even
             durationSpeedListWithOverlap[eventToTest][expName] = {}
             durationSpeedListWithoutOverlap[eventToTest][expName] = {}
             
-            for id in pool.animalDictionnary.keys():
-                animal = pool.animalDictionnary[id].RFID
+            for id in pool.animalDictionary.keys():
+                animal = pool.animalDictionary[id].RFID
                 print("Computing (duration,speed) with overlap")
                 durationSpeedListWithOverlap[eventToTest][expName][animal] = []
                 
                 for event in eventToTestTimeLineWithOverlap[id].getEventList():
-                    tuplePerEventWithOverlap = getDurationSpeed( event, pool.animalDictionnary[id] )
+                    tuplePerEventWithOverlap = getDurationSpeed( event, pool.animalDictionary[id] )
                     
                     durationSpeedListWithOverlap[eventToTest][expName][animal].append( tuplePerEventWithOverlap )
                 
                 print("Computing (duration,speed) no overlap")
                 durationSpeedListWithoutOverlap[eventToTest][expName][animal] = []    
                 for event in eventToTestTimeLineWithoutOverlap[id].getEventList():
-                    tuplePerEventWithoutOverlap = getDurationSpeed( event, pool.animalDictionnary[id] )
+                    tuplePerEventWithoutOverlap = getDurationSpeed( event, pool.animalDictionary[id] )
                     
                     durationSpeedListWithoutOverlap[eventToTest][expName][animal].append( tuplePerEventWithoutOverlap ) 
                 
@@ -230,7 +230,7 @@ def computeEventsOverlappingWithUsvFast(strain=None, age=None, sex=None, tmin=0,
         # all USVs
         usvTimeLine = EventTimeLine(connection, "Voc", idA=None, minFrame=tmin, maxFrame=tmax, loadEventIndependently=True)
         
-        USVTimeLineCompleteDictionnary = usvTimeLine.getDictionnary()
+        USVTimeLineCompleteDictionary = usvTimeLine.getDictionary()
 
         # load all event timelines
         print("Loading all timelines")
@@ -243,8 +243,8 @@ def computeEventsOverlappingWithUsvFast(strain=None, age=None, sex=None, tmin=0,
             eventToTestTimeLineWithoutOverlap = {}
             eventToTestTimeLineWithOverlap = {}
 
-            for animal in pool.animalDictionnary.keys():
-                print("loading  for animal: ", pool.animalDictionnary[animal].RFID)
+            for animal in pool.animalDictionary.keys():
+                print("loading  for animal: ", pool.animalDictionary[animal].RFID)
                 eventToTestTimeLine[animal] = EventTimeLine(connection, eventToTest, idA=animal, minFrame=tmin, maxFrame=tmax)
 
                 eventToTestTimeLineWithoutOverlap[animal] = EventTimeLine(connection, "EvToTestWithoutOverlap",
@@ -259,7 +259,7 @@ def computeEventsOverlappingWithUsvFast(strain=None, age=None, sex=None, tmin=0,
 
                 for eventBehavToCheck in eventToTestTimeLine[animal].getEventList():
 
-                    over = checkIfOverlapWith(eventBehavToCheck, USVTimeLineCompleteDictionnary)
+                    over = checkIfOverlapWith(eventBehavToCheck, USVTimeLineCompleteDictionary)
 
                     if (over == True):
                         for t in range(eventBehavToCheck.startFrame, eventBehavToCheck.endFrame + 1):
@@ -270,26 +270,26 @@ def computeEventsOverlappingWithUsvFast(strain=None, age=None, sex=None, tmin=0,
 
                 print("build")
 
-                eventToTestTimeLineWithOverlap[animal].reBuildWithDictionnary(eventToBuildOverlapDic)
-                eventToTestTimeLineWithoutOverlap[animal].reBuildWithDictionnary(eventToBuildNoOverlapDic)
+                eventToTestTimeLineWithOverlap[animal].reBuildWithDictionary(eventToBuildOverlapDic)
+                eventToTestTimeLineWithoutOverlap[animal].reBuildWithDictionary(eventToBuildNoOverlapDic)
 
             print("Event time lines done")
 
             ''' Compute the results '''
-            for id in pool.animalDictionnary.keys():
-                animal = pool.animalDictionnary[id].RFID
+            for id in pool.animalDictionary.keys():
+                animal = pool.animalDictionary[id].RFID
                 print("Computing (duration,speed) with overlap")
                 durationSpeedListWithOverlap[eventToTest][strain][sex][age][expName][animal] = []
 
                 for event in eventToTestTimeLineWithOverlap[id].getEventList():
-                    tuplePerEventWithOverlap = getDurationSpeed(event, pool.animalDictionnary[id])
+                    tuplePerEventWithOverlap = getDurationSpeed(event, pool.animalDictionary[id])
 
                     durationSpeedListWithOverlap[eventToTest][strain][sex][age][expName][animal].append(tuplePerEventWithOverlap)
 
                 print("Computing (duration,speed) no overlap")
                 durationSpeedListWithoutOverlap[eventToTest][strain][sex][age][expName][animal] = []
                 for event in eventToTestTimeLineWithoutOverlap[id].getEventList():
-                    tuplePerEventWithoutOverlap = getDurationSpeed(event, pool.animalDictionnary[id])
+                    tuplePerEventWithoutOverlap = getDurationSpeed(event, pool.animalDictionary[id])
 
                     durationSpeedListWithoutOverlap[eventToTest][strain][sex][age][expName][animal].append(tuplePerEventWithoutOverlap)
 
