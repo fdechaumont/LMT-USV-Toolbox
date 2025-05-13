@@ -173,13 +173,19 @@ if __name__ == '__main__':
         
     # parsing DATA
     
+    problems = []
+    
     print("Parsing data...")
     for number in numberList:
         
         if not number in USVSeqDic:
-            print( "Warning: they key #" , number , "has a problem. (usv seq number not in database or problem with wav file not processed)")
+            prob = "Warning: they key #" , number , "has a problem. (usv seq number not in database or problem with wav file not processed)"
+            print( prob )
+            #print( "Warning: they key #" , number , "has a problem. (usv seq number not in database or problem with wav file not processed)")
+            
             print( "Check if USV seq has been correctly recorded in the database.")
-            input("enter to continue")
+            #input("enter to continue")
+            problems.append( prob )
             continue
             
         
@@ -270,6 +276,10 @@ if __name__ == '__main__':
                     
     totalTime = time.time() - startTime
     import datetime    
+    
+    for p in problems:
+        print( p )
+    
     print("Execution time (h:m:s):" , str(datetime.timedelta(seconds=totalTime)) )
     print("All done.")
     
