@@ -46,6 +46,21 @@ class Voc:
         self.isInBadRepeat = False
         self.fileName = ""
         
+        self.label = ""
+        self.accepted = False
+        self.score = 0
+        self.principalFrequencyKHz = 0
+        self.lowFrequencyKHz = 0
+        self.highFrequencyKHz = 0
+        self.deltaFrequencyKHz = 0
+        self.frequencyStandardDeviationKHz = 0
+        self.slopeKHz = 0
+        self.sinuosity = 0
+        self.meanPower = 0
+        self.tonality = 0
+        self.peakFrequencyKHz = 0
+        
+        
     def setStartFrame(self,startFrame):
         self.startFrame = startFrame
         self.endFrame = int( startFrame + self.durationMs/33.3 )
@@ -84,6 +99,20 @@ class Voc:
         event.metadata["minPower"] = self.minPower
         event.metadata["isInBadRepeat"] = self.isInBadRepeat
         event.metadata["fileName"] = self.fileName
+        event.metadata["label"] = self.label
+        event.metadata["accepted"] = self.accepted
+        event.metadata["score"] = self.score
+        event.metadata["principalFrequencyKHz"] = self.principalFrequencyKHz
+        event.metadata["lowFrequencyKHz"] = self.lowFrequencyKHz
+        event.metadata["highFrequencyKHz"] = self.highFrequencyKHz
+        event.metadata["deltaFrequencyKHz"] = self.deltaFrequencyKHz
+        event.metadata["frequencyStandardDeviationKHz"] = self.frequencyStandardDeviationKHz
+        event.metadata["slopeKHz"] = self.slopeKHz
+        event.metadata["sinuosity"] = self.sinuosity
+        event.metadata["meanPower"] = self.meanPower
+        event.metadata["tonality"] = self.tonality
+        event.metadata["peakFrequencyKHz"] = self.peakFrequencyKHz
+        
         return event
     
     def __str__(self):

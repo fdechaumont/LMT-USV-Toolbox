@@ -1,5 +1,6 @@
 '''
 Created on 1 oct. 2021
+Modified by Elodie on 23 Jan 2026
 
 @author: Fab
 '''
@@ -15,9 +16,10 @@ def fileBiggerSplit( fileName ):
             result = s
     return result
 
-def getDataFileMatch( dataFiles, number ):
+
+def getDataFileMatch( dataFiles, number, extension = ".txt" ):
     for file in dataFiles:
-        if not ".txt" in file:
+        if not extension in file:
             continue
         if number in file:
             return file
