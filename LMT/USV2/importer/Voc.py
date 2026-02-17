@@ -4,6 +4,7 @@ Created on 23 juil. 2019
 @author: Fab
 '''
 from lmtanalysis.Event import Event
+import numpy as np
 
 
 class Voc:
@@ -18,47 +19,52 @@ class Voc:
         self.startFrame = None
         self.endFrame = None
         
-        self.vocNumber = 0
-        self.nbPoint = 0
-        self.startOffsetMs = 0
-        self.durationMs = 0
-        self.frequencyDynamicHz = 0
-        self.startFrequencyHz = 0    
-        self.endFrequencyHz = 0
-        self.diffStartEndFrequencyHz = 0    
-        self.meanFrequencyHz = 0
-        self.frequencyTVHz = 0
-        self.meanFrequencyTVHz = 0
-        self.linearityIndex = 0
-        self.meanPower = 0
-        self.nbModulation = 0
-        self.nbPtHarmonics = 0 
-        self.nbJump = 0
+        self.vocNumber = np.nan
+        self.nbPoint = np.nan
+        self.startOffsetMs = np.nan
+        self.durationMs = np.nan
+        self.frequencyDynamicHz = np.nan
+        self.startFrequencyHz = np.nan    
+        self.endFrequencyHz = np.nan
+        self.diffStartEndFrequencyHz = np.nan    
+        self.meanFrequencyHz = np.nan
+        self.frequencyTVHz = np.nan
+        self.meanFrequencyTVHz = np.nan
+        self.linearityIndex = np.nan
+        self.meanPower = np.nan
+        self.nbModulation = np.nan
+        self.nbPtHarmonics = np.nan 
+        self.nbJump = np.nan
         self.isModulated = False
         self.isShort = False
         self.isUpward = False
         self.isDownward = False
-        self.minFrequency = 0
-        self.maxFrequency = 0
-        self.peakPower = 0
-        self.peakFrequency = 0
-        self.minPower = 0
+        self.minFrequency = np.nan
+        self.maxFrequency = np.nan
+        self.peakPower = np.nan
+        self.peakFrequency = np.nan
+        self.minPower = np.nan
         self.isInBadRepeat = False
         self.fileName = ""
         
         self.label = ""
         self.accepted = False
-        self.score = 0
-        self.principalFrequencyKHz = 0
-        self.lowFrequencyKHz = 0
-        self.highFrequencyKHz = 0
-        self.deltaFrequencyKHz = 0
-        self.frequencyStandardDeviationKHz = 0
-        self.slopeKHz = 0
-        self.sinuosity = 0
-        self.meanPower = 0
-        self.tonality = 0
-        self.peakFrequencyKHz = 0
+        self.score = np.nan
+        self.principalFrequencyKHz = np.nan
+        self.lowFrequencyKHz = np.nan
+        self.highFrequencyKHz = np.nan
+        self.deltaFrequencyKHz = np.nan
+        self.frequencyStandardDeviationKHz = np.nan
+        self.slopeKHz = np.nan
+        self.sinuosity = np.nan
+        self.meanPower = np.nan
+        self.tonality = np.nan
+        self.peakFrequencyKHz = np.nan
+        
+        self.maxFrequency = np.nan
+        self.maxAmplitude = np.nan
+        self.meanPeakFrequency = np.nan
+        self.cvFrequency = np.nan
         
         
     def setStartFrame(self,startFrame):
@@ -112,6 +118,10 @@ class Voc:
         event.metadata["meanPower"] = self.meanPower
         event.metadata["tonality"] = self.tonality
         event.metadata["peakFrequencyKHz"] = self.peakFrequencyKHz
+        event.metadata["maxFrequency"] = self.maxFrequency
+        event.metadata["maxAmplitude"] = self.maxAmplitude
+        event.metadata["meanPeakFrequency"] = self.meanPeakFrequency
+        event.metadata["cvFrequency"] = self.cvFrequency
         
         return event
     
