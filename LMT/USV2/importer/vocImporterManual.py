@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
     print( "Path: " , path )
     #allUSVPath = path + "/usv/voc/"
-    allUSVSelected = path + "/usv/voc/"
+    allUSVSelected = path + "/usv/"
     
     print( "Extracting wav files numbers in usv/voc")
     numberList = []
