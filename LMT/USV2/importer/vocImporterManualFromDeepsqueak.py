@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print("This script will import vocalizations analysed with DeepSqueak in a LMT database.")    
     print("Your USVs should be located in databasefile.sqlite/usv/ folder.")
     print("All analysed files that are exported in xls format in this folder will be imported.")
-    print("check the pre trigger duration before launching the script.")
+    print("!!!! check the pre trigger duration before launching the script.")
     print("Select database to import vocalizations.")
     
     extension = "_Stats.xls"
